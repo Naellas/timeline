@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Timeline</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 40px;
+    }
+    h2 {
+      text-align: center;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 40px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #ccc;
+      z-index: 0;
+    }
+    .event {
+      text-align: center;
+      z-index: 1;
+      position: relative;
+      width: 14%;
+    }
+    .event .circle {
+      background: #ddd;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 auto;
+      line-height: 40px;
+      font-weight: bold;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    .event.active .circle {
+      background: #0078d4;
+      color: white;
+    }
+    .event .label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .event .description {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h2>📅 Live Project Timeline</h2>
+  <div class="timeline" id="timeline"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

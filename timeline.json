@@ -1,0 +1,32 @@
+[
+  {
+    "year": 2020,
+    "label": "Project Started",
+    "status": "\u2705"
+  },
+  {
+    "year": 2021,
+    "label": "Phase 1 - Dev",
+    "status": "\u2705"
+  },
+  {
+    "year": 2022,
+    "label": "Phase 2 - Test",
+    "status": "\u2705"
+  },
+  {
+    "year": 2023,
+    "label": "Phase 3 - Deploy",
+    "status": "\u2705"
+  },
+  {
+    "year": 2024,
+    "label": "Review",
+    "status": "\u23f3"
+  },
+  {
+    "year": 2025,
+    "label": "Next Steps",
+    "status": "\ud83d\udd1c"
+  }
+]
