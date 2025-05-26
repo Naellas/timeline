@@ -1,31 +1,31 @@
 [
   {
-    "year": 2020,
+    "date": "2020-01-15",
     "label": "Project Started",
     "status": "\u2705"
   },
   {
-    "year": 2021,
+    "date": "2021-03-22",
     "label": "Phase 1 - Dev",
     "status": "\u2705"
   },
   {
-    "year": 2022,
+    "date": "2022-07-10",
     "label": "Phase 2 - Test",
     "status": "\u2705"
   },
   {
-    "year": 2023,
+    "date": "2023-09-01",
     "label": "Phase 3 - Deploy",
     "status": "\u2705"
   },
   {
-    "year": 2024,
+    "date": "2024-05-26",
     "label": "Review",
     "status": "\u23f3"
   },
   {
-    "year": 2025,
+    "date": "2025-11-11",
     "label": "Next Steps",
     "status": "\ud83d\udd1c"
   }
