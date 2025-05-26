@@ -3,31 +3,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dynamic Editable Timeline</title>
+  <title>Interactive Dynamic Timeline</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; background: #f0f2f5; }
     h2, h3 { text-align: center; }
     .timeline-container {
       position: relative;
-      height: 120px;
+      height: 140px;
       border-top: 4px solid #ccc;
       margin: 40px 0;
       overflow-x: auto;
       white-space: nowrap;
+      min-width: 1200px;
     }
     .event {
       display: inline-block;
       text-align: center;
-      position: relative;
+      position: absolute;
       transform: translateY(-50%);
-      margin-right: 20px;
+      width: 140px;
     }
     .event .circle {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       background: #ddd;
       border-radius: 50%;
-      line-height: 30px;
+      line-height: 40px;
       font-weight: bold;
       margin: 0 auto;
     }
@@ -35,8 +36,17 @@
       background: #0078d4;
       color: white;
     }
-    .event .label { margin-top: 6px; font-size: 0.9em; }
-    .event input, .event select { font-size: 0.8em; margin-top: 4px; width: 100px; }
+    .event .label, .event .date {
+      margin-top: 6px;
+      font-size: 0.9em;
+    }
+    .event button {
+      margin-top: 5px;
+      margin-left: 2px;
+      margin-right: 2px;
+      font-size: 0.8em;
+      cursor: pointer;
+    }
 
     .now-marker {
       position: absolute;
@@ -54,18 +64,26 @@
     .form-group { margin-bottom: 10px; }
     label { display: block; font-weight: bold; margin-bottom: 4px; }
     input, select { width: 100%; padding: 6px; }
-    button { margin-top: 10px; padding: 6px 12px; background: #0078d4; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #005a9e; }
+    button.save-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button.save-btn:hover { background: #005a9e; }
   </style>
 </head>
 <body>
-  <h2>📅 Dynamic Editable Timeline</h2>
+  <h2>📅 Interactive Dynamic Timeline</h2>
   <div class="timeline-container" id="timelineContainer">
     <div id="nowMarker" class="now-marker"></div>
   </div>
 
   <div class="form-section">
-    <h3>Add or Update Event</h3>
+    <h3>Add / Edit Event</h3>
     <form id="eventForm">
       <div class="form-group">
         <label for="date">Date</label>
@@ -83,7 +101,7 @@
           <option value="🔜">🔜 Planned</option>
         </select>
       </div>
-      <button type="submit">Save Event</button>
+      <button class="save-btn" type="submit">Save Event</button>
     </form>
   </div>
 

@@ -19,7 +19,7 @@ function renderTimeline() {
   const maxDate = new Date(Math.max(...timelineData.map(e => new Date(e.date))));
   const totalMs = maxDate - minDate;
   const now = new Date();
-  const containerWidth = timelineEl.scrollWidth;
+  const containerWidth = timelineEl.scrollWidth || 1200;
 
   timelineData.sort((a, b) => new Date(a.date) - new Date(b.date)).forEach(event => {
     const eventDate = new Date(event.date);
@@ -27,12 +27,11 @@ function renderTimeline() {
 
     const eventDiv = document.createElement('div');
     eventDiv.className = 'event' + (eventDate.toDateString() === now.toDateString() ? ' active' : '');
-    eventDiv.style.left = `calc(${percent}% - 15px)`;
-    eventDiv.style.position = 'absolute';
+    eventDiv.style.left = `${(percent / 100) * containerWidth}px`;
     eventDiv.innerHTML = `
       <div class="circle">${event.status}</div>
       <div class="label">${event.label}</div>
-      <div class="label">${event.date}</div>
+      <div class="date">${event.date}</div>
       <button onclick="editEvent('${event.date}')">✏️</button>
       <button onclick="deleteEvent('${event.date}')">🗑️</button>
     `;
@@ -40,7 +39,7 @@ function renderTimeline() {
   });
 
   const nowPercent = ((now - minDate) / totalMs) * 100;
-  nowMarker.style.left = `calc(${nowPercent}% - 1px)`;
+  nowMarker.style.left = `${(nowPercent / 100) * containerWidth}px`;
 
   localStorage.setItem('timelineData', JSON.stringify(timelineData));
 }
@@ -51,12 +50,15 @@ function editEvent(date) {
     document.getElementById('date').value = item.date;
     document.getElementById('label').value = item.label;
     document.getElementById('status').value = item.status;
+    document.getElementById('date').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
 
 function deleteEvent(date) {
-  timelineData = timelineData.filter(e => e.date !== date);
-  renderTimeline();
+  if (confirm("Are you sure you want to delete this event?")) {
+    timelineData = timelineData.filter(e => e.date !== date);
+    renderTimeline();
+  }
 }
 
 form.addEventListener('submit', e => {
